@@ -1,43 +1,38 @@
-const descriptions = ["student", "software developer", "super cool guy"];
+const descriptions = ["student", "software developer", "really cool fella"];
 let currentIndex = 0;
-let typingSpeed = 100;
-let deletingSpeed = 50;
-let pauseTime = 1000;
+let charIndex = 0;
+let isDeleting = false;
+
+const typingSpeed = 100;
+const deletingSpeed = 50;
+const pauseTime = 1000;
 
 const descriptionElement = document.getElementById("description");
-const cursorElement = document.getElementById("cursor");
-let isDeleting = false;
-let charIndex = 0;
 
 function updateDescription() {
   const currentText = descriptions[currentIndex];
-  const displayText = `"${currentText.substring(0, charIndex)}"`;
-  descriptionElement.textContent = displayText;
+  const partialText = currentText.substring(0, charIndex);
 
-  if (isDeleting) {
-    charIndex--;
-  } else {
+  descriptionElement.innerHTML = `"${partialText}<span class='cursor'>|</span>"`;
+
+  if (!isDeleting) {
     charIndex++;
-  }
-
-  if (!isDeleting && charIndex === currentText.length) {
-    cursorElement.classList.add("blinking");
-    setTimeout(() => {
-      isDeleting = true;
-      cursorElement.classList.remove("blinking");
-      updateDescription();
-    }, pauseTime);
-    return;
-  }
-
-  if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    currentIndex = (currentIndex + 1) % descriptions.length;
+    if (charIndex === currentText.length + 1) {
+      setTimeout(() => {
+        isDeleting = true;
+        updateDescription();
+      }, pauseTime);
+      return;
+    }
+  } else {
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      currentIndex = (currentIndex + 1) % descriptions.length;
+    }
   }
 
   setTimeout(updateDescription, isDeleting ? deletingSpeed : typingSpeed);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateDescription();
-});
+document.addEventListener("DOMContentLoaded", updateDescription);
