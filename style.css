@@ -4,8 +4,8 @@ body {
   font-family: 'Monaco', monospace;
   margin: 0;
   padding: 0;
-  display: flex; 
-  justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start; 
   align-items: flex-start;
   height: 100vh;
 }
@@ -13,7 +13,7 @@ body {
 .container {
   width: 90%;
   max-width: 800px;
-  margin: 20px;
+  margin: 20px; 
 }
 
 .code {
@@ -21,12 +21,17 @@ body {
   font-size: 16px;
 }
 
+/* Line numbers */
 .line-number {
   color: #6E7674;
   display: inline-block;
   width: 30px;
   text-align: right;
   margin-right: 10px;
+}
+
+.line-number.highlight {
+  color: #D4D4D4; 
 }
 
 .keyword {
@@ -59,12 +64,12 @@ body {
 
 .link {
   text-decoration: underline;
-  color: #4FC1FF;
 }
 
 .link:hover {
   color: #569CD6;
 }
+
 
 .cursor {
   color: #D4D4D4; 
