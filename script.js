@@ -1,10 +1,11 @@
 const descriptions = ["student", "software developer", "really cool fella"];
 let currentIndex = 0;
-let typingSpeed = 100; // Typing (ms)
-let deletingSpeed = 50; // Deleting (ms)
-let pauseTime = 1000; // Pause (ms)
+let typingSpeed = 100; // (ms per char)
+let deletingSpeed = 50; // (ms per char)
+let pauseTime = 1000; // (ms)
 
 const descriptionElement = document.getElementById("description");
+const cursorElement = document.getElementById("cursor");
 let isDeleting = false;
 let charIndex = 0;
 
@@ -13,38 +14,36 @@ function updateDescription() {
   let displayText;
 
   if (isDeleting) {
-    // Handle deleting
+    // Deleting
     charIndex--;
     displayText = `"${currentText.substring(0, charIndex)}"`;
   } else {
-    // Handle typing
+    // Typing
     charIndex++;
     displayText = `"${currentText.substring(0, charIndex)}"`;
   }
 
   descriptionElement.textContent = displayText;
 
-  // Blinking
   if (!isDeleting && charIndex === currentText.length) {
-    descriptionElement.textContent += "|";
     setTimeout(() => {
       isDeleting = true;
+      cursorElement.classList.add("blinking"); // Enable blinking during pause
       updateDescription();
     }, pauseTime);
     return;
   }
 
-  // Next description
   if (isDeleting && charIndex === 0) {
     isDeleting = false;
     currentIndex = (currentIndex + 1) % descriptions.length;
   }
 
+  cursorElement.classList.remove("blinking");
 
   setTimeout(updateDescription, isDeleting ? deletingSpeed : typingSpeed);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  descriptionElement.textContent = "|"; 
   updateDescription();
 });
