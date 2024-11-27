@@ -12,8 +12,7 @@ const descriptionElement = document.getElementById("description");
 function updateDescription() {
   const currentText = descriptions[currentIndex];
   const partialText = currentText.substring(0, charIndex);
-
-  descriptionElement.innerHTML = `"${partialText}<span class='cursor'>|</span>"`;
+  descriptionElement.innerHTML = `"${partialText}"<span class="cursor">|</span>`;
 
   if (!isDeleting) {
     charIndex++;
