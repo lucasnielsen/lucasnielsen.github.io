@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: flex-start;
   height: 100vh;
 }
@@ -13,7 +13,7 @@ body {
 .container {
   width: 90%;
   max-width: 800px;
-  margin: 20px; 
+  margin: 20px;
 }
 
 .code {
@@ -30,7 +30,7 @@ body {
 }
 
 .line-number.highlight {
-  color: #D4D4D4; 
+  color: #D4D4D4;
 }
 
 .keyword {
@@ -66,17 +66,20 @@ body {
 }
 
 .link:hover {
-  color: #FFB496;
+  color: #569CD6;
 }
 
 .cursor {
-  color: #D4D4D4; 
+  color: #D4D4D4;
   font-weight: bold;
-  animation: none; 
+  animation: none;
+  display: inline-block;
+  position: relative;
+  left: -1px;
 }
 
 .cursor.blinking {
-  animation: blink 0.6s step-end infinite; 
+  animation: blink 0.6s step-end infinite;
 }
 
 @keyframes blink {
