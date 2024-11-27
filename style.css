@@ -1,43 +1,89 @@
-const descriptions = ["student", "software developer", "really cool fella"];
-let currentIndex = 0;
-let typingSpeed = 100;
-let deletingSpeed = 50;
-let pauseTime = 1000;
-
-const descriptionElement = document.getElementById("description");
-const cursorElement = document.getElementById("cursor");
-let isDeleting = false;
-let charIndex = 0;
-
-function updateDescription() {
-  const currentText = descriptions[currentIndex];
-  const displayText = `"${currentText.substring(0, charIndex)}"`;
-  descriptionElement.textContent = displayText;
-
-  if (isDeleting) {
-    charIndex--;
-  } else {
-    charIndex++;
-  }
-
-  if (!isDeleting && charIndex === currentText.length) {
-    cursorElement.classList.add("blinking");
-    setTimeout(() => {
-      isDeleting = true;
-      cursorElement.classList.remove("blinking");
-      updateDescription();
-    }, pauseTime);
-    return;
-  }
-
-  if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    currentIndex = (currentIndex + 1) % descriptions.length;
-  }
-
-  setTimeout(updateDescription, isDeleting ? deletingSpeed : typingSpeed);
+body {
+  background-color: #1F1F1F;
+  color: #D4D4D4;
+  font-family: 'Monaco', monospace;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateDescription();
-});
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px;
+}
+
+.code {
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.line-number {
+  color: #6E7674;
+  display: inline-block;
+  width: 30px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.line-number.highlight {
+  color: #D4D4D4;
+}
+
+.keyword {
+  color: #569CD6;
+}
+
+.const-name {
+  color: #4FC1FF;
+}
+
+.operator {
+  color: #D4D4D4;
+}
+
+.bracket {
+  color: #DA70CB;
+}
+
+.outer {
+  color: #FFD700;
+}
+
+.key {
+  color: #9CDCFE;
+}
+
+.string {
+  color: #CE9178;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #569CD6;
+}
+
+.cursor {
+  color: #D4D4D4;
+  font-weight: bold;
+  animation: none;
+  display: inline-block;
+  position: relative;
+  left: -1px;
+}
+
+.cursor.blinking {
+  animation: blink 0.6s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
