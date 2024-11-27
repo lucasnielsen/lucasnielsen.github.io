@@ -2,7 +2,7 @@ const descriptions = ["student", "software developer", "really cool fella"];
 let currentIndex = 0;
 let typingSpeed = 100;
 let deletingSpeed = 50;
-let pauseTime = 1000;
+let pauseTime = 10000;
 
 const descriptionElement = document.getElementById("description");
 const cursorElement = document.getElementById("cursor");
