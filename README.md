@@ -9,9 +9,19 @@ https://www.lucasnielsen.com/
 Feel free to fork this project and use it for your personal or professional needs. The only requirement is that you credit me as the original creator.
 
 ## License
-This project is licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
-You are free to use, modify, and distribute this project, as long as you give proper credit to me. For more information, see the `LICENSE` file.
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute this project, even for commercial purposes, as long as attribution is provided. For more information, see the `LICENSE` file.
 
 ## Contact
 If you have any questions or need support, feel free to contact me via the **Contact** or **Profiles** section on my website:
 https://www.lucasnielsen.com/
+
+## Attribution
+To comply with the license, please include the following comment in your code:  
+```html
+<!-- 
+    JavaScript VSCode Website Template by Lucas Nielsen
+    GitHub: https://github.com/lucasnielsen
+    License: MIT 
+-->
+```
