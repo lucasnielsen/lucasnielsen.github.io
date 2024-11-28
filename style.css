@@ -12,7 +12,7 @@ body {
 
 .container {
   max-width: 800px;
-  margin: 5px 0 0 5px;
+  margin: 1px 0 0 1px;
   padding: 0;
 }
 
@@ -26,7 +26,7 @@ body {
   display: inline-block;
   width: 30px;
   text-align: right;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .line-number.highlight {
