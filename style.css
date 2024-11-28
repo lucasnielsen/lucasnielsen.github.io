@@ -24,7 +24,7 @@ body {
 .line-number {
   color: #6E7674;
   display: inline-block;
-  width: 30px;
+  width: 10px;
   text-align: right;
   margin-right: 10px;
 }
